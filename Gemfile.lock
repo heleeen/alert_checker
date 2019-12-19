@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    faraday (0.17.1)
+      multipart-post (>= 1.2, < 3)
+    mackerel-client (0.8.0)
+      faraday (~> 0.9)
+    multipart-post (2.1.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mackerel-client
+
+BUNDLED WITH
+   2.0.2
