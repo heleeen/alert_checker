@@ -9,14 +9,11 @@ provider "aws" {
   region = var.region
 }
 
-module "iam" {
-  source = "./terraform/iam"
-}
-
 module "function" {
-  source            = "./terraform/function"
-  name              = var.name
-  mackerel_api_key  = var.mackerel_api_key
-  slack_webhook_url = var.slack_webhook_url
-  role_arn          = module.iam.role_arn
+  source = "git@github.com:heleeen/heleeen_terraform.git//lambda?ref=v0.2"
+  name   = var.name
+  environments = map(
+    "MACKEREL_API_KEY", var.mackerel_api_key,
+    "SLACK_WEBHOOK_URL", var.slack_webhook_url
+  )
 }
